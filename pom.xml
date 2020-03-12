@@ -58,6 +58,7 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
             <!-- Maven Assembly Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
