@@ -13,6 +13,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
         <junit.version>4.12</junit.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <jetty.version>9.4.27.v20200227</jetty.version>
     </properties>
 
     <dependencies>
@@ -92,6 +94,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
             </plugin>
         </plugins>
     </build>
