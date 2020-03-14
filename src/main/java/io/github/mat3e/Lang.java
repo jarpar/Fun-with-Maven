@@ -5,13 +5,19 @@ class Lang {
     private String welcomeMsg;
     private String code;
 
+    public Lang(Long id, String welcomeMsg, String code) {
+        this.id = id;
+        this.welcomeMsg = welcomeMsg;
+        this.code = code;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getWelcomeMsg() {
         return welcomeMsg;
