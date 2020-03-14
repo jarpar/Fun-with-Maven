@@ -16,11 +16,15 @@ public class HelloServlet extends HttpServlet {
     private final Logger logger = LoggerFactory.getLogger(HelloServlet.class);
     private static final String NAME_PARAM = "name";
 
+    private HelloService service;
+
+    /**
+     * Servlet container needs it.
+     */
+    @SuppressWarnings("unused")
     public HelloServlet() {
         this(new HelloService());
     }
-
-    private HelloService service;
 
     HelloServlet(HelloService service) {
         this.service = service;
@@ -29,8 +33,6 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Got request with parameters " + req.getParameterMap());
-        var name = Optional.ofNullable(req.getParameter(NAME_PARAM)).orElse("world");
-        resp.getWriter().write("Hello " + name + "!");
-
+        resp.getWriter().write(service.prepareGreeting(req.getParameter(NAME_PARAM)));
     }
 }
