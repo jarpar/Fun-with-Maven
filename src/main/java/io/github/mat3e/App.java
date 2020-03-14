@@ -26,6 +26,7 @@ public class App {
                         new PlusConfiguration(),
                         new JettyWebXmlConfiguration()
                 });
+        webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
 
 
 //        webapp.addServlet(HelloServlet.class, "/api/*");
