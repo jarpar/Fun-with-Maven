@@ -12,6 +12,6 @@ public class HelloService {
 
     String prepareGreeting(String name, Long langId) {
         return "Hello " + Optional.ofNullable(name).orElse(FALLBACK_NAME) + "!";
-
+        
     }
 }
