@@ -5,13 +5,23 @@ import java.util.Optional;
 public class HelloService {
     static final String FALLBACK_NAME = "world";
     static final Lang FALLBACK_LANG = new Lang(1L, "Hello", "en");
+    private LangRepository repository;
+
+    HelloService() {
+        this(new LangRepository());
+    }
+
+    public HelloService(LangRepository repository) {
+        this.repository = repository;
+    }
 
     String prepareGreeting(String name) {
         return prepareGreeting(name, FALLBACK_LANG.getId());
     }
 
     String prepareGreeting(String name, Long langId) {
-        return "Hello " + Optional.ofNullable(name).orElse(FALLBACK_NAME) + "!";
-        
+        var welcomeMsg = repository.findById(langId).orElse(FALLBACK_LANG).getWelcomeMsg();
+        var nametoWelcome = Optional.ofNullable(name).orElse(FALLBACK_NAME);
+        return welcomeMsg + " " + nametoWelcome + "!";
     }
 }
